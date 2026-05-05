@@ -85,3 +85,7 @@ After hardware changes, re-run:
 | Chinese language tasks | qwen series |
 
 All models are accessed via Ollama's local API at `http://localhost:11434`.
+
+---
+
+> This skill was built by the author using [Claude Code](https://claude.ai/code).

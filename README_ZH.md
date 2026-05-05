@@ -83,3 +83,7 @@ ollama-skill/
 | 中文任务 | qwen 系列 |
 
 所有模型均通过 Ollama 本地 API 访问：`http://localhost:11434`。
+
+---
+
+> 本技能由作者使用 [Claude Code](https://claude.ai/code) 编写。
