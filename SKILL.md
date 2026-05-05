@@ -58,7 +58,7 @@ All models are accessed via Ollama's local API at `http://localhost:11434`:
 # Text generation
 curl http://localhost:11434/api/generate -d '{"model":"<model>","prompt":"..."}'
 
-# Image recognition (multimodal models only)
+# Image recognition / OCR (multimodal models only)
 curl http://localhost:11434/api/generate -d '{"model":"llava-llama3","prompt":"Describe this image","images":["<base64>"]}'
 
 # Embeddings
@@ -67,6 +67,50 @@ curl http://localhost:11434/api/embeddings -d '{"model":"nomic-embed-text","prom
 # Streaming (add "stream":true)
 curl http://localhost:11434/api/generate -d '{"model":"qwen2.5:7b","prompt":"...","stream":true}'
 ```
+
+## Prompt Templates by Task
+
+The prompt heavily influences output quality, especially for multimodal models. Use these templates as starting points:
+
+### OCR / Text Extraction
+
+```
+Act as an OCR engine. Extract ALL visible text from this image.
+Output the exact text, preserving layout (lines, columns, labels).
+Do not describe or interpret — just transcribe what you see.
+```
+
+For structured content (tables, charts, forms), add: "Preserve the table/chart structure in your output."
+
+### Image Description
+
+```
+Describe this image in detail. Include: subject, setting, colors,
+text visible, objects, and the overall composition.
+```
+
+### Document / Screenshot Analysis
+
+```
+Analyze this screenshot. Identify: (1) what application or page this is,
+(2) the key information displayed, (3) any errors, warnings, or
+unusual elements, (4) the action the user should take next.
+```
+
+### Chinese / Mixed-language Images
+
+For images containing Chinese text, use the Chinese prompt:
+
+```
+请识别图中所有文字内容，保持原有格式和排版。逐行输出，不要遗漏任何文字。
+```
+
+## Accuracy Notes
+
+- **General multimodal models** (llava-llama3, minicpm) are NOT dedicated OCR engines. Results may vary between runs, especially for small or stylized text.
+- For **critical OCR tasks**, run the same image 2-3 times and compare results. The model may "interpret" text rather than transcribe it verbatim.
+- **Prompt engineering matters**: "Act as an OCR engine, transcribe exactly" produces different (often more literal) output than "Describe what you see in this image."
+- For production OCR needs, consider dedicated tools (Tesseract, PaddleOCR) and use multimodal models for verification or context understanding.
 
 ## Keeping Data Fresh
 

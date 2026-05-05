@@ -10,10 +10,12 @@
 - **Best for:** 图文识别、图片内容提取、图表理解
 - **API Usage:**
   ```bash
-  # Text-only
-  curl http://localhost:11434/api/generate -d '{"model":"llava-llama3","prompt":"Hello"}'
-  # With image (base64)
-  curl http://localhost:11434/api/generate -d '{"model":"llava-llama3","prompt":"Describe this image","images":["<base64>"]}'
+  # OCR / Text extraction
+  curl http://localhost:11434/api/generate -d '{"model":"llava-llama3","prompt":"Act as an OCR engine. Extract ALL visible text. Preserve layout.","images":["<base64>"]}'
+  # Image description
+  curl http://localhost:11434/api/generate -d '{"model":"llava-llama3","prompt":"Describe this image in detail","images":["<base64>"]}'
+  # Chinese OCR
+  curl http://localhost:11434/api/generate -d '{"model":"llava-llama3","prompt":"请识别图中所有文字内容，保持原有格式。","images":["<base64>"]}'
   ```
 
 ### qwen2.5:7b (4.7 GB)

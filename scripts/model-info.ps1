@@ -73,6 +73,8 @@ foreach ($m in $modelDetails) {
 
     $apiExample = if ($isEmbedding) {
         "curl http://localhost:11434/api/embeddings -d '{\"model\":\"$name\",\"prompt\":\"Text to embed\"}'"
+    } elseif ($isMultimodal) {
+        "# OCR / Text extraction`ncurl http://localhost:11434/api/generate -d '{\"model\":\"$name\",\"prompt\":\"Act as an OCR engine. Extract ALL visible text. Preserve layout.\",\"images\":[\"<base64>\"]}'`n# Image description`ncurl http://localhost:11434/api/generate -d '{\"model\":\"$name\",\"prompt\":\"Describe this image in detail\",\"images\":[\"<base64>\"]}'`n# Chinese OCR`ncurl http://localhost:11434/api/generate -d '{\"model\":\"$name\",\"prompt\":\"请识别图中所有文字内容，保持原有格式。\",\"images\":[\"<base64>\"]}'"
     } else {
         "curl http://localhost:11434/api/generate -d '{\"model\":\"$name\",\"prompt\":\"Your prompt here\"}'"
     }
