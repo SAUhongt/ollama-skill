@@ -1,5 +1,7 @@
 # Ollama Local Models — Claude Code Skill
 
+[中文](README_ZH.md)
+
 A [Claude Code](https://claude.ai/code) skill that detects locally installed [Ollama](https://ollama.com/) models and intelligently matches them to user tasks — OCR, image recognition, text generation, embeddings, and more.
 
 ## How It Works
@@ -17,20 +19,30 @@ A [Claude Code](https://claude.ai/code) skill that detects locally installed [Ol
 
 ## Installation
 
-1. Clone this repo into your Claude Code skills directory:
+### Option 1: Install via Claude Code (recommended)
+
+In Claude Code, type:
+
+```
+/install https://github.com/SAUhongt/ollama-skill
+```
+
+### Option 2: Clone manually
 
 ```powershell
 git clone https://github.com/SAUhongt/ollama-skill.git
 ```
 
-2. Run the setup scripts to generate your hardware and model configs:
+### Setup
+
+After installing, run these scripts to generate your hardware and model configs:
 
 ```powershell
 .\scripts\hardware-info.ps1
 .\scripts\model-info.ps1
 ```
 
-3. The skill auto-activates when you ask Claude Code to use local models.
+The skill auto-activates when you ask Claude Code to use local models.
 
 ## File Structure
 
@@ -44,7 +56,8 @@ ollama-skill/
 │   ├── detect-ollama.ps1     # Check if Ollama is installed and running
 │   ├── hardware-info.ps1     # Gather CPU/RAM/GPU/VRAM info
 │   └── model-info.ps1        # Gather model list with details
-└── README.md
+├── README.md                 # English README
+└── README_ZH.md              # 中文说明
 ```
 
 ## Keeping Data Fresh
