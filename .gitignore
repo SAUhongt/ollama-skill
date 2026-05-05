@@ -1,0 +1,17 @@
+# PowerShell
+*.ps1xml
+*.psm1~
+
+# OS
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Claude Code
+.claude/
